@@ -1,65 +1,108 @@
-window.onload = function () {
-    var slider = document.getElementById('slider');
-    var ul = document.getElementById('ad_ul');
-    var ol = document.getElementById('ad_ol');
-    var ollis = ol.children;
-    var leader = 0;
-    var target = 0;
+window.onload = function() {
+    var container = document.getElementById('container');
+    var list = document.getElementById('list');
+    var buttons = document.getElementById('buttons').getElementsByTagName('span');
+    var prev = document.getElementById('prev');
+    var next = document.getElementById('next');
+    var index = 1;
+    var tim
 
-    for (var i = 0; i < ollis.length; i++) {
-        ollis[i].index = i;
-        ollis[i].onmouseover = function () {
-            for (var j = 0; j < ollis.length; j++) {
-                ollis[j].className = '';
+    function animate(offset) {
+        //获取的是style.left，是相对左边获取距离，所以第一张图后style.left都为负值，
+        //且style.left获取的是字符串，需要用parseInt()取整转化为数字。
+        var newLeft = parseInt(list.style.left) + offset;
+        list.style.left = newLeft + 'px';
+        //无限滚动判断
+
+        if (newLeft > -500) {
+            list.style.left = -2000 + 'px';
+
+        }
+
+        if (newLeft < -2000) {
+            list.style.left = -500 + 'px';
+
+        }
+
+    }
+
+
+    function play() {
+        //重复执行的定时器
+        timer = setInterval(function() {
+            next.onclick();
+
+        }, 2000)
+
+    }
+
+
+    function stop() {
+        clearInterval(timer);
+
+    }
+
+
+    function buttonsShow() {
+        //将之前的小方块的样式清除
+
+        for (var i = 0; i < buttons.length; i++) {
+
+            if (buttons[i].className == "on") {
+                buttons[i].className = "";
+
             }
 
-            this.className = 'current';
-            target = -this.index * 500;
         }
-    }
-    setInterval(function () {
-        leader = leader + (target - leader) / 10;
-        ul.style.left = leader + 'px';
-    }, 20);
-}
+        //数组从0开始，故index需要-1
+        buttons[index - 1].className = "on";
 
-    //鼠标悬停事件
-    scroll.onmouseover = function() {
-        clearInterval(timer);
-    }
-    scroll.onmouseout = function() {
-        timer = setInterval(autoPlay, 10);
     }
 
- //定义定时器，按周期tab栏的切换
- function autuCheck() {
-    //每间隔对应周期 ，标签索引值自增
-    ++current_index;
-    //当索引值自增到上限 重置为0
-    if (current_index == scroll.length)
-        current_index = 0;
-    //切换标签后修改current标签的样式
-    for (var i = 0; i < scroll.length; i++) {
-        if (i == current_index) {
-            scroll[i].style.backgroundColor = '#fff';
-            scroll[i].style.borderBottom = '1px solid #fff';
-        } else {
-            scroll[i].style.backgroundColor = '';
-            scroll[i].style.borderBottom = '';
+    prev.onclick = function() {
+        index -= 1;
+
+        if (index < 1) {
+            index = 5
+
         }
-    }
-    //切换显示的内容
-    //获取所有的tab-body-ul
-    var ad_ols = document.getElementById('ad_ol').getElementsByTagName('ol');
-    //遍历所有的tab-body-ul
-    for (var i = 0; i < ad_ols.length; i++) {
-        //将所有的元素隐藏 去掉current类名
-        ad_ols[i].className = ad_ols[i].className.replace(' current', '');
-        scroll[i].className = scroll[i].className.replace(' current', '');
-        //将当前索引对应的元素设为显示
-        if (scroll[i] == scroll[current_index]) {
-            this.className += ' current';
-            ad_ols[i].className += ' current';
+        buttonsShow();
+        animate(500);
+
+    };
+
+    next.onclick = function() {
+        //由于上边定时器的作用，index会一直递增下去，我们只有5个小圆点，所以需要做出判断
+        index += 1;
+
+        if (index > 5) {
+            index = 1
+
         }
+        animate(-500);
+        buttonsShow();
+
+    };
+
+
+    for (var i = 0; i < buttons.length; i++) {
+        (function(i) {
+            buttons[i].onmouseover = function() {
+                var moveIndex = parseInt(this.getAttribute('index'));
+                var offset = 500 * (index - moveIndex); //这个index是当前图片停留时的index
+                animate(offset);
+                index = moveIndex;
+                buttonsShow();
+
+            }
+
+        })(i)
+
     }
+
+    container.onmouseover = stop;
+    container.onmouseout = play;
+    play();
+
+
 }
