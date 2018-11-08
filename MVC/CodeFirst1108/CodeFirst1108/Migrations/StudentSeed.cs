@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using EntityFramework.Extensions;
+using MoreLinq;
 using CodeFirst1108.DataContext.cs;
 
 namespace CodeFirst1108.Migrations
