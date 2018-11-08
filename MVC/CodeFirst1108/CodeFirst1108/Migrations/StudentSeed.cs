@@ -1,9 +1,13 @@
-﻿using CodeFirst1108.DataContext.cs;
+﻿using CodeFirst1108.DataContext;
+using CodeFirst1108.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using EntityFramework.Extensions;
+using CodeFirst1108.DataContext.cs;
 
 namespace CodeFirst1108.Migrations
 {
@@ -11,9 +15,130 @@ namespace CodeFirst1108.Migrations
     {
         public static void Seed(StuDBContext context)
         {
+            #region 电子信息学生
+            var d1 = context.DepartMents.SingleOrDefault(x => x.Name == "电子信息工程学院");
+            for (var i = 0; i < 400; i++)
+            {
+                var fname = "";
+                var lname = "";
+                var fullname = _GetRanDomChinaseFullName(ref fname, ref lname);
 
+                var student = new Student()
+                {
+                    StudentNo = "DZXX" + i.ToString("0000"),
+                    FirstName = fname,
+                    LastName = lname,
+                    FullName = fullname,
+                    BirthDay = DateTime.Now,
+                    Address = "社湾路28号",
+                    Department = d1,
+                    Phone = "188********"
+                };
+                context.Students.Add(student);
+                Thread.Sleep(1);
+            }
+            #endregion
+
+            #region 机电学生
+            var d2 = context.DepartMents.SingleOrDefault(x => x.Name == "机电工程学院");
+            for (var i = 0; i < 300; i++)
+            {
+                var fname = "";
+                var lname = "";
+                var fullname = _GetRanDomChinaseFullName(ref fname, ref lname);
+
+                var student = new Student()
+                {
+                    StudentNo = "JDGC" + i.ToString("0000"),
+                    FirstName = fname,
+                    LastName = lname,
+                    FullName = fullname,
+                    BirthDay = DateTime.Now,
+                    Address = "社湾路28号",
+                    Department = d2,
+                    Phone = "188********"
+                };
+                context.Students.Add(student);
+                Thread.Sleep(1);
+            }
+            #endregion
+
+            #region 汽车学生
+            var d3 = context.DepartMents.SingleOrDefault(x => x.Name == "汽车工程学院");
+            for (var i = 0; i < 250; i++)
+            {
+                var fname = "";
+                var lname = "";
+                var fullname = _GetRanDomChinaseFullName(ref fname, ref lname);
+
+                var student = new Student()
+                {
+                    StudentNo = "QCGC" + i.ToString("0000"),
+                    FirstName = fname,
+                    LastName = lname,
+                    FullName = fullname,
+                    BirthDay = DateTime.Now,
+                    Address = "社湾路28号",
+                    Department = d3,
+                    Phone = "188********"
+                };
+                context.Students.Add(student);
+                Thread.Sleep(1);
+            }
+            #endregion
+
+            #region 贸易与旅游学生
+            var d4 = context.DepartMents.SingleOrDefault(x => x.Name == "贸易与旅游学院");
+            for (var i = 0; i < 200; i++)
+            {
+                var fname = "";
+                var lname = "";
+                var fullname = _GetRanDomChinaseFullName(ref fname, ref lname);
+
+                var student = new Student()
+                {
+                    StudentNo = "MYLY" + i.ToString("0000"),
+                    FirstName = fname,
+                    LastName = lname,
+                    FullName = fullname,
+                    BirthDay = DateTime.Now,
+                    Address = "社湾路28号",
+                    Department = d4,
+                    Phone = "188********"
+                };
+                context.Students.Add(student);
+                Thread.Sleep(1);
+            }
+            #endregion
+
+            #region 财经与物流学生
+            var d5 = context.DepartMents.SingleOrDefault(x => x.Name == "财经与物流学院");
+            for (var i = 0; i < 150; i++)
+            {
+                var fname = "";
+                var lname = "";
+                var fullname = _GetRanDomChinaseFullName(ref fname, ref lname);
+
+                var student = new Student()
+                {
+                    StudentNo = "CJWL" + i.ToString("0000"),
+                    FirstName = fname,
+                    LastName = lname,
+                    FullName = fullname,
+                    BirthDay = DateTime.Now,
+                    Address = "社湾路28号",
+                    Department = d5,
+                    Phone = "188********"
+                };
+                context.Students.Add(student);
+                Thread.Sleep(1);
+            }
+            #endregion
+
+            context.SaveChanges();
+            _GarbageClear();
         }
-        public static string _GetRanDomChinaseFullName(ref string firstName, ref string lastName)
+        private static string _GetRanDomChinaseFullName(ref string firstName, ref string lastName)
         {
             string[] _seedFirstName = new string[]
             {
@@ -58,7 +183,15 @@ namespace CodeFirst1108.Migrations
                 + _seedLastName.Substring(rnd.Next(0, _seedLastName.Length - 1), 1);
             return firstName + lastName;
         }
-
+        private static void _GarbageClear()
+        {
+            var dbcontext = new StuDBContext();
+            var students = dbcontext.Students.DistinctBy(x => x.FullName).ToList();
+            //删除重名
+            foreach (var stu in students)
+                dbcontext.Students.Where(x => x.FullName == stu.FullName &&
+                x.ID != stu.ID).Delete();
+        }
     }
 
 }
