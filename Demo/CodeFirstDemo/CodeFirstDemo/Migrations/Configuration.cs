@@ -16,13 +16,13 @@
         //ÖÖ×Ó·½·¨
         protected override void Seed(CodeFirstDemo.CodeFirstModels.CourseContext context)
         {
-            //context.Database.ExecuteSqlCommand("delete courses");
-            //context.Database.ExecuteSqlCommand("delete students");
-            //context.Database.ExecuteSqlCommand("delete departments");
+            context.Database.ExecuteSqlCommand("delete courses");
+            context.Database.ExecuteSqlCommand("delete students");
+            context.Database.ExecuteSqlCommand("delete departments");
 
-            //DepartmentSeed.Seed(context);
-            //CourseSeed.Seed(context);
-            //StudentSeed.Seed(context);            
+            DepartmentSeed.Seed(context);
+            CourseSeed.Seed(context);
+            StudentSeed.Seed(context);
         }
     }
 }
