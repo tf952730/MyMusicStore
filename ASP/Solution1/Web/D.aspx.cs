@@ -28,6 +28,6 @@ public partial class D : System.Web.UI.Page
         //Session.Remove("C");
         //立即过期
         Session.Abandon();
-        Response.Redirect("~D.aspx");
+        Response.Redirect("~/D.aspx");
     }
 }
