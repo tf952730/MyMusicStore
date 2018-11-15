@@ -4,9 +4,9 @@
     <h4>商品列表</h4>
     <asp:GridView ID="GridView1" runat="server" Width="100%" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDeleting="GridView1_RowDeleting" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
         <Columns>
-            <asp:BoundField DataField="SN" HeaderText="商品编号">
-            <ItemStyle Width="130px" />
-            </asp:BoundField>
+            <asp:HyperLinkField DataNavigateUrlFields="ID" DataNavigateUrlFormatString="productdetail.aspx?id={0}" HeaderText="商品编号" DataTextField="SN" DataTextFormatString="{0}">
+            <ItemStyle Width="100px" />
+            </asp:HyperLinkField>
             <asp:BoundField DataField="Name" HeaderText="商品名称">
             <ItemStyle Width="130px" />
             </asp:BoundField>
@@ -36,26 +36,5 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-
-    <script>
-        var links = document.links;//获取所有链接
-        for (var i in links) {
-            //遍历所有连接
-            var a = links[i];
-            if (a.text == 'Delete' || a.text == '删除') {
-                //如果是删除链接按钮
-                //临时保存原来的链接
-                var alink = a.href;
-                //清除
-                a.href = '#';
-                a.addEventListener("click", function () {
-                    var result = window.confirm("你是认真的吗？该记录会被删除！！！");
-                    if (result == true)
-                        eval(alink);
-                    return false;
-                });
-            }
-        }
-    </script>
 </asp:Content>
 
