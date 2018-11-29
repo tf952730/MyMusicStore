@@ -12,13 +12,13 @@ namespace MucicStoreEntity.UserAndRole
     {
         public bool RoleExists(string name)
         {
-            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new MusicContext()));
+            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new EntityDbContext()));
             return rm.RoleExists(name);
         }
 
         public bool CreateRole(string name, string displayName)
         {
-            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new MusicContext()));
+            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new EntityDbContext()));
             var role = new ApplicationRole() { Name = name, DisplayName = displayName };
             var idResult = rm.Create(role);
             return idResult.Succeeded;
@@ -26,14 +26,14 @@ namespace MucicStoreEntity.UserAndRole
 
         public bool CreateRole(ApplicationRole role)
         {
-            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new MusicContext()));
+            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new EntityDbContext()));
             var idResult = rm.Create(role);
             return idResult.Succeeded;
         }
 
         public bool CreateUser(ApplicationUser user, string password)
         {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MusicContext()))
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new EntityDbContext()))
             {
                 PasswordValidator = new PasswordValidator()
                 {
@@ -48,7 +48,7 @@ namespace MucicStoreEntity.UserAndRole
             return idResult.Succeeded;
         }
 
-        public bool CreateUser(ApplicationUser user, string password, MusicContext dbContext)
+        public bool CreateUser(ApplicationUser user, string password, EntityDbContext dbContext)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dbContext))
             {
@@ -67,14 +67,14 @@ namespace MucicStoreEntity.UserAndRole
 
         public bool AddUserToRole(string userId, string roleName)
         {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MusicContext()));
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new EntityDbContext()));
             var idResult = um.AddToRole(userId, roleName);
             return idResult.Succeeded;
         }
 
         public void ClearUserRoles(string userId)
         {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MusicContext()));
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new EntityDbContext()));
             var user = um.FindById(userId);
             var currentRoles = new List<IdentityUserRole>();
             currentRoles.AddRange(user.Roles);
@@ -86,7 +86,7 @@ namespace MucicStoreEntity.UserAndRole
 
         public bool MapUserToPerson(ApplicationUser user, Person person)
         {
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MusicContext()));
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new EntityDbContext()));
             user.Person = person;
             var idResult = um.Update(user);
             return idResult.Succeeded;
@@ -94,7 +94,7 @@ namespace MucicStoreEntity.UserAndRole
 
         public ApplicationRole GetRole(string roleName)
         {
-            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new MusicContext()));
+            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new EntityDbContext()));
             var role = rm.FindByName(roleName);
             return role;
         }
@@ -102,7 +102,7 @@ namespace MucicStoreEntity.UserAndRole
         public List<ApplicationRole> GetRoleAll()
         {
             var results = new List<ApplicationRole>();
-            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new MusicContext()));
+            var rm = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(new EntityDbContext()));
             foreach (var item in rm.Roles)
                 results.Add(item);
 

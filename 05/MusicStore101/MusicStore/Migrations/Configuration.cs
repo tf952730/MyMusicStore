@@ -5,17 +5,18 @@ namespace MusicStore.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MusicStoreEntity.MusicContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<MusicStoreEntity.EntityDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(MusicStoreEntity.MusicContext context)
+        protected override void Seed(MusicStoreEntity.EntityDbContext context)
         {
-            UserAndRoleSeed.AddRoles();
-            UserAndRoleSeed.AddUsers();
+            //UserAndRoleSeed.AddRoles();
+            //UserAndRoleSeed.AddUsers();
+            GenreSeed.Seed();
         }
     }
 }

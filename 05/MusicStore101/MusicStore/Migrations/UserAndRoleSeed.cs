@@ -7,7 +7,7 @@ namespace MusicStore.Migrations
 {
     public class UserAndRoleSeed
     {
-        private static readonly MusicStoreEntity.MusicContext _dbContext = new MusicStoreEntity.MusicContext();
+        private static readonly MusicStoreEntity.EntityDbContext _dbContext = new MusicStoreEntity.EntityDbContext();
 
         /// <summary>
         /// 添加角色
