@@ -53,7 +53,7 @@ namespace MusicStore.Migrations
                 new Album
                 {
                     Title="爱的故事上集",Genre=genres.Single(g =>g.Name=="摇滚"),Price=8.99M,
-                    Artist=artists.Single(a=>a.Name=="孙耀威"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                    Artist=artists.Single(a=>a.Name=="孙耀威"),AlbumArtUrl="/Content/Images/nDZQ-2297194.jpg"
                 },
                  new Album
                 {
