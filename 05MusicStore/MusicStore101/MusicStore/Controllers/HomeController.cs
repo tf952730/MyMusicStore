@@ -19,7 +19,7 @@ namespace MusicStore.Controllers
             return View(list);
         }
 
-        public string TestLogin(string username = "hs", string pwd = "123.abc")
+        public string TestLogin(string username = "tf", string pwd = "123456")
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MusicStoreEntity.EntityDbContext()));
             var user = userManager.Find(username, pwd);

@@ -11,7 +11,7 @@ namespace MusicStore.ViewModels
     /// </summary>
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "用户不能为空")]//此字段为必填
+        [Required(ErrorMessage = "用户名不能为空")]//此字段为必填
         [Display(Name = "用户名")]//定义字段的呈现名称
         public string UserName { get; set; }
 
