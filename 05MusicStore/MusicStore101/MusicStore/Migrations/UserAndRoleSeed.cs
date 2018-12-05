@@ -78,6 +78,7 @@ namespace MusicStore.Migrations
             idManager.CreateUser(loginUser, "123.abc");
             //添加到Admin角色
             idManager.AddUserToRole(loginUser.Id, "Admin");
+
             #endregion
 
             #region 注册用户
