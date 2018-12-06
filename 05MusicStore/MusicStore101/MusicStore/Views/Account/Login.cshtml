@@ -14,7 +14,7 @@
 <h2>用户登录</h2>
 <p>注册账号 @Html.ActionLink("这里","Register")</p>
 
-@using (Html.BeginForm("login", "Account", new {returnUrl =ViewBag.ReturnUrl}, FormMethod.Post))
+@using (Html.BeginForm("login", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div>
@@ -45,4 +45,3 @@
         </fieldset>
     </div>
 }
-
