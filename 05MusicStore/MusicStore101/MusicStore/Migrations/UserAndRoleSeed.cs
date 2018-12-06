@@ -79,7 +79,7 @@ namespace MusicStore.Migrations
             //添加到Admin角色
             idManager.AddUserToRole(loginUser.Id, "Admin");
 
-            #endregion
+            #endregion 
 
             #region 注册用户
 
@@ -99,7 +99,7 @@ namespace MusicStore.Migrations
                 UpdateTime = DateTime.Now,
                 InquiryPassword = "123456",
             };
-            var newUser2 = new ApplicationUser()
+            var newUser2 = new ApplicationUser() 
             {
                 UserName = "hs",
                 FirstName = "黄",
