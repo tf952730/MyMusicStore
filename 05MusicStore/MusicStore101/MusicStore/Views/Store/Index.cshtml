@@ -17,10 +17,10 @@
             @*显示前三个该分类的专辑*@
             @if (item.Albums.Count > 0)
             {
-                <em>:</em>
+                <b>:</b>
                 foreach (var ab in item.Albums.Take(3))
                 {
-                    <a href="@Url.Action("Detail",new {id=ab.ID})" id="album-List">
+                    <a href="@Url.Action("Detail",new {id=ab.ID})">
                         <i class="glyphicon glyphicon-cd"></i>
                         <span>@(ab.Title) &nbsp; &nbsp;</span>
                     </a>

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using MucicStoreEntity;
-using MucicStoreEntity.UserAndRole;
+using MusicStoreEntity.UserAndRole;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -34,6 +33,8 @@ namespace MusicStoreEntity
         public IDbSet<Genre> Genres { get; set; }
         public IDbSet<Artist> Artists { get; set; }
         public IDbSet<Album> Albums { get; set; }
+
+        public IDbSet<Cart> Carts { get; set; }
 
         #endregion
     }

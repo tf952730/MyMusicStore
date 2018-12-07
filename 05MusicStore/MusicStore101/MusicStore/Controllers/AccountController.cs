@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Services.Description;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using MucicStoreEntity.UserAndRole;
+using MusicStoreEntity.UserAndRole;
 using MusicStore.ViewModels;
 using MusicStoreEntity;
 

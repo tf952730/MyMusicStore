@@ -1,7 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using MusicStoreEntity.UserAndRole;
 
-namespace MucicStoreEntity.UserAndRole
+namespace MusicStoreEntity.UserAndRole
 {
     public class ApplicaitionUserInApplication
     {

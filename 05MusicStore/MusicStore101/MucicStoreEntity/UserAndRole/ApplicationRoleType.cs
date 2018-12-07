@@ -1,4 +1,4 @@
-﻿namespace MucicStoreEntity.UserAndRole
+﻿namespace MusicStoreEntity.UserAndRole
 {
     public enum ApplicationRoleType
     {

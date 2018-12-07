@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MucicStoreEntity.UserAndRole
+namespace MusicStoreEntity.UserAndRole
 {
     /// <summary>
     /// 系统基础信息

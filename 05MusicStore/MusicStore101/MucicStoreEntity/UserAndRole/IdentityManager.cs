@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MusicStoreEntity.UserAndRole;
 using MusicStoreEntity;
 using System.Collections.Generic;
 
-namespace MucicStoreEntity.UserAndRole
+namespace MusicStoreEntity.UserAndRole
 {
     /// <summary>
     /// 与系统用户标识认证配置相关的约束工具类

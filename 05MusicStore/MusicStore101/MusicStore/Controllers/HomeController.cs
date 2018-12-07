@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using MucicStoreEntity.UserAndRole;
+using MusicStoreEntity.UserAndRole;
 using MusicStoreEntity;
 using System;
 using System.Collections.Generic;
