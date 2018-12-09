@@ -42,7 +42,9 @@ namespace MusicStore.Migrations
                 new Artist(){Name = "金莎",Sex = false,Description="金莎（kym），中国流行女歌手、演员。"},
                 new Artist(){Name = "张杰",Sex = true,Description="华语歌坛新生代领军人物，偶像与实力兼具的超人气天王。"},
                 new Artist(){Name = "赵雷",Sex = true,Description="民谣音乐人赵雷，中国内地新生代民谣歌手。"},
-                new Artist(){Name = "梁静茹",Sex = false,Description="华语著名女歌手，马来西亚人。被称为“情歌天后”。"}
+                new Artist(){Name = "梁静茹",Sex = false,Description="华语著名女歌手，马来西亚人。被称为“情歌天后”。"},
+                new Artist(){Name = "毛不易",Sex = true,Description="毛不易，原名王维家，1994年10月1日出生于黑龙江省齐齐哈尔市泰来县，中国内地流行乐男歌手，毕业于杭州师范大学护理专业。"},
+                new Artist(){Name = "徐佳莹",Sex = false,Description="华语流行音乐创作女歌手、金曲奖得主。1984年12月20日生于台湾台中市，籍贯四川省简阳县。"},
             };
             foreach (var a in artists)
                 _dbContext.Artists.Add(a);
@@ -52,7 +54,7 @@ namespace MusicStore.Migrations
                 new Album
                 {
                     Title="爱的故事上集",Genre=genres.Single(g =>g.Name=="摇滚"),Price=8.99M,
-                    Artist=artists.Single(a=>a.Name=="孙耀威"),AlbumArtUrl="/Content/Images/nDZQ-2297194.jpg"
+                    Artist=artists.Single(a=>a.Name=="孙耀威"),AlbumArtUrl="/Content/Images/placeholder.gif"
                 },
                  new Album
                 {
@@ -248,6 +250,56 @@ namespace MusicStore.Migrations
                 {
                     Title="会过去的",Genre=genres.Single(g =>g.Name=="慢摇"),Price=8.99M,
                     Artist=artists.Single(a=>a.Name=="梁静茹"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="平凡的一天",Genre=genres.Single(g =>g.Name=="DJ"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="毛不易"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="无问",Genre=genres.Single(g =>g.Name=="DJ"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="毛不易"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="不染",Genre=genres.Single(g =>g.Name=="DJ"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="毛不易"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="消愁",Genre=genres.Single(g =>g.Name=="DJ"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="毛不易"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="像我这样的人",Genre=genres.Single(g =>g.Name=="DJ"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="毛不易"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="身骑白马",Genre=genres.Single(g =>g.Name=="拉丁"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="徐佳莹"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="最初的记忆",Genre=genres.Single(g =>g.Name=="拉丁"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="徐佳莹"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="一江水",Genre=genres.Single(g =>g.Name=="拉丁"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="徐佳莹"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="失落沙洲",Genre=genres.Single(g =>g.Name=="拉丁"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="徐佳莹"),AlbumArtUrl="/Content/Images/placeholder.gif"
+                },
+                new Album
+                {
+                    Title="最美的遇见",Genre=genres.Single(g =>g.Name=="拉丁"),Price=8.99M,
+                    Artist=artists.Single(a=>a.Name=="徐佳莹"),AlbumArtUrl="/Content/Images/placeholder.gif"
                 },
             };
             foreach (var n in albums)

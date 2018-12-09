@@ -160,7 +160,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\home-showcase.png" />
     <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Images\nDZQ-2297194.jpg" />
     <Content Include="Content\Images\placeholder.gif" />
     <Content Include="Content\Images\ProgressIcon.gif" />
     <Content Include="Content\themes\base\accordion.css" />
