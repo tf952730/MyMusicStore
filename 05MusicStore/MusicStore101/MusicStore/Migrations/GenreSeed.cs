@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MusicStoreEntity;
-using MusicStoreEntity;
 using System.Threading;
 
 namespace MusicStore.Migrations
