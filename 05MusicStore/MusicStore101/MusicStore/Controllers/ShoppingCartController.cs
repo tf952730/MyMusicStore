@@ -113,22 +113,22 @@ namespace MusicStore.Controllers
                 _context.Carts.Remove(cartItem);
             _context.SaveChanges();
 
-                //刷新局部视图 生成html元素注入到<tbody>中
+            //刷新局部视图 生成html元素注入到<tbody>中
             var carts = _context.Carts.Where(x => x.Person.ID == person.ID).ToList();
             var totalPrice = (from item in carts select item.Count * item.Album.Price).Sum();
             var htmlString = "";
             foreach (var item in carts)
             {
                 htmlString += "<tr>";
-                htmlString += "<td><a href='../store/detail/" + item.ID + "'>" + item.Album.Title + "</a></td>";
+                htmlString += " <td><a href='../store/detail/" + item.ID + "'>" + item.Album.Title + "</a></td>";
                 htmlString += "<td>" + item.Album.Price.ToString("C") + "</td>";
                 htmlString += "<td>" + item.Count + "</td>";
-                htmlString += "<td><a href=\"#\"onclick=\"removeCart('"+item.ID+ "');\"><i class=\"glyphicon glyphicon-remove\"></i>移出购物车</a></td><tr>";
+                htmlString += "<td><a href=\"#\" onclick=\"removeCart('" + item.ID + "');\"><i class=\"glyphicon glyphicon-remove\"></i>移出购物车</a></td><tr>";
             }
 
             htmlString += "<tr><td ></td><td></td><td>总价</td><td>" + totalPrice.ToString("C") + "</td ></tr>";
 
-            return Json("");
+            return Json("htmlString");
         }
     }
 }
