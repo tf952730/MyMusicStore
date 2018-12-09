@@ -257,16 +257,15 @@
     <Content Include="Views\Account\ChangePassWord.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MucicStoreEntity\MusicStoreEntity.csproj">
+    <ProjectReference Include="..\MusicStoreEntity\MusicStoreEntity.csproj">
       <Project>{b93544bc-0125-4e79-8467-19afa59da6c5}</Project>
       <Name>MusicStoreEntity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
