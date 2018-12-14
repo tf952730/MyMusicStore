@@ -21,6 +21,7 @@ namespace MusicStore.Controllers
         /// <returns></returns>
         public ActionResult Register()
         {
+
             return View();
         }
 
