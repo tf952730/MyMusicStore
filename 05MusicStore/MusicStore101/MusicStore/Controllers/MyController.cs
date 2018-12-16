@@ -1,17 +1,35 @@
-﻿using System;
+﻿using MusicStoreEntity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MusicStore.ViewModels;
 
 namespace MusicStore.Controllers
 {
+    
     public class MyController : Controller
     {
-        // GET: My
+        private static readonly EntityDbContext _context = new EntityDbContext();
+
+        // 修改个人信息
         public ActionResult Index()
         {
-            return View();
+            if (Session["LoginUserSessionModel"] == null)
+                return RedirectToAction("login", "Account", new { returnUrl = Url.Action("index", "ShoppingCart") });
+
+            var person = (Session["LoginUserSessionModel"] as LoginUserSessionModel).Person;
+
+            var myVM = new MyViewModel()
+            {
+                Name = person.Name,
+                Address = person.Address,
+                MobilNumber = person.MobileNumber
+            };
+
+            ViewBag.AvardaUrl = person.Avarda;
+            return View(myVM);
         }
     }
 }
