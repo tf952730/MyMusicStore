@@ -56,7 +56,12 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                    aria-haspopup="true" aria-expanded="False">
                     <img src="@user.Person.Avarda" alt="头像" id="userAvarda"/>
-                    @user.Person.Name<span class="caret"></span>
+                    @user.Person.Name
+                    <span class="caret"></span>
+
+                    @*百度地图定位*@
+                    <span id="city" class="glyphicon glyphicon-map-marker">定位中...</span><span id="district"></span>
+
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("index", "ShoppingCart")">购物车(@carts.Count)</a></li>
@@ -91,3 +96,26 @@
 @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=pUZ8FwInuQD3F6mddV8d0o0hWnvT0SGH"></script>
+
+<script>
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r) {
+            if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                //显示百度地图查询结果 地区
+                if (r.address.district != "") {
+                    document.getElementById('district').innerHTML = r.address.district;
+                }
+
+                //显示百度地图查询结果 城市
+                if (r.address.city != "") {
+                    document.getElementById('city').innerHTML = r.address.city;
+                }
+            } else {
+
+                document.getElementById("city").innerHTML = "无法定位";
+            }
+        },
+        { enableHighAccuracy: true });  
+</script>
