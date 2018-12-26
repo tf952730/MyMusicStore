@@ -29,13 +29,13 @@ namespace MusicStore
 
             //绑定Ueditor的样式
             bundles.Add(new StyleBundle("~/UEditor/Css").Include
-                ("~/Conten/ueditor/iframe.css"));
+                ("~/ueditor/iframe.css"));
 
             //绑定Ueditor的样式
             bundles.Add(new ScriptBundle("~/bundles/UEditor").Include(
-                "~/Conten/ueditor.config.js",
-                "~/Conten/ueditor.all.js",
-                "~/Conten/ueditor.all.min.js"
+                "~/ueditor/ueditor.config.js",
+                "~/ueditor/ueditor.all.js",
+                "~/ueditor/ueditor.all.min.js"
             ));
 
             //绑定JqueryUI的样式库

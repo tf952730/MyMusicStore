@@ -69,6 +69,35 @@
         });
         editor.render('editor');
 
+        //提交回复
+        $("#btnCmt").click(function() {
+            //获得编辑器中的内容
+            UE.getEditor('editor');
+            var content = UE.getEditor('editor').getContent();
+            //ajax提交
+            $.ajax({
+                type: 'post',
+                asyn: true,
+                url: '@Url.Action("AddCmt","Store")',
+                data:{
+                    "id":"@Model.ID",
+                    "cmt":content,
+                    "reply":""
+                },
+                dataType: 'json',
+                success:function(data) {
+                    if (data == 'nologon') {
+                        //如果没登录
+                        location.href = "@Url.Action("login","Account",
+                                            new {returnUrl=Url.Action("Detail","Store",new {id=Model.ID})})";
+                    }
+                    else if (data == "OK") {
+                        alert('发表成功！');
+                    }
+                }
+            });
+        });
+
     @*<!-- 配置文件 -->
     <script type="text/javascript" src="~/Content/ueditor1_4_3-utf8-net/ueditor.config.js"></script>
     <!-- 编辑器源码文件 -->
