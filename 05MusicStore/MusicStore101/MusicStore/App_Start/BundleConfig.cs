@@ -27,8 +27,19 @@ namespace MusicStore
                 "~/Content/bootstrap.css",
                 "~/Content/Site.css"));
 
+            //绑定Ueditor的样式
+            bundles.Add(new StyleBundle("~/UEditor/Css").Include
+                ("~/Conten/ueditor/iframe.css"));
+
+            //绑定Ueditor的样式
+            bundles.Add(new ScriptBundle("~/bundles/UEditor").Include(
+                "~/Conten/ueditor.config.js",
+                "~/Conten/ueditor.all.js",
+                "~/Conten/ueditor.all.min.js"
+            ));
+
             //绑定JqueryUI的样式库
-            bundles.Add(new StyleBundle("~/Content/JqueryUI").Include(
+           bundles.Add(new StyleBundle("~/Content/JqueryUI").Include(
                 "~/Content/themes/base/jquery-ui.css"
             ));
             //绑定JqueryUI的脚本库
